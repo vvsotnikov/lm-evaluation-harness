@@ -1,0 +1,17 @@
+dataset_path: vvsotnikov/mm-astronomy
+task: astronomy_object_type
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+  - metric: acc_norm
+    aggregation: mean
+    higher_is_better: true
+output_type: multiple_choice
+training_split: train
+validation_split: validation
+doc_to_text: "You are given the following report about and astrophysical event:\n{{message}}\nQuestion: What is the type of the physical object that caused the event? Possible types are: Accreting object, Active galactic nucleus, Binary system, Black hole, Electromagnetic source, Galaxy, Neutron star, Nova, Pulsar, Quasar, Star and stellar system, Supernova, Variable star.\nAnswer:"
+doc_to_target: "{{choices.label.index(answerKey)}}"
+doc_to_choice: "{{choices.text}}"
+should_decontaminate: true
+doc_to_decontamination_query: "You are given the following report about and astrophysical event:\n{{message}}\nQuestion: What is the type of the physical object that caused the event? Possible types are: Accreting object, Active galactic nucleus, Binary system, Black hole, Electromagnetic source, Galaxy, Neutron star, Nova, Pulsar, Quasar, Star and stellar system, Supernova, Variable star.\nAnswer:"
